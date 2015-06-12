@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset=utf-8>
+  <title>First Component</title>
+</head>
+<body>
+
+  <div id="some"></div>
+  <script src="http://fb.me/react-0.11.1.js"></script>
+  <script src="http://fb.me/JSXTransformer-0.11.1.js"></script>
+  <script type="text/jsx">
+    /** @jsx React.DOM */
+
+  
+    var MyClass = React.createClass({
+      
+      getInitialState: function() {
+        return {
+          isVisible: true,
+          titleMessage: "Hello World",
+          messages: "asdasasd"
+        }
+      },
+
+      render: function() {
+
+        var inStyle = {
+            display: this.state.isVisible ? 'block' : 'none'
+          };
+
+        var messages = this.state.messages
+        
+        return (
+          <div className="sasd" >
+            <p style={inStyle}>{this.state.titleMessage} </p>
+            <SubClass message={messages}/>
+          </div>
+        );
+      }
+    });
+
+    var SubClass = React.createClass({
+      getDefaultProps: function() {
+        return {
+          message: 'TTTTTTTTTT'
+        };
+      },
+
+      render: function() {
+        return (
+        <div className="asas">
+          <p> another message </p>
+          <p> {this.props.message}</p>
+        </div>
+        );
+      }
+    });
+
+    var myCompo = React.renderComponent(
+      <MyClass />,
+      document.getElementById('some'),
+      function(){
+        console.log('Hiii');
+      }
+    );
+
+
+  </script>
+</body>
+</html>
+
